@@ -1,0 +1,3 @@
+function DIFF = frameDiff(CURRENT_IMG, PREVIOUS_IMG)
+    DIFF = abs(CURRENT_IMG - PREVIOUS_IMG);
+end

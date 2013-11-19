@@ -1,0 +1,8 @@
+function MOTION_IMG = generateMotionImg(PREVIOUS_FRAME, CURRENT_FRAME, motion_threshold)
+
+NEGATIVE_IMG = PREVIOUS_FRAME .* CURRENT_FRAME < 0;
+DIFF_IMG = abs(PREVIOUS_FRAME - CURRENT_FRAME) > motion_threshold;
+
+MOTION_IMG = NEGATIVE_IMG .* DIFF_IMG;
+
+end
