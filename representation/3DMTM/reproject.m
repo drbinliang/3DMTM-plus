@@ -63,27 +63,14 @@ XOZ_IMG = flipdim(XOZ_IMG,1);
 % YOZ_IMG = mat2gray(YOZ_IMG);
 
 XOY_IMG = IN_XOY_IMG;
-% XOZ_IMG = uint8(255 * mat2gray(XOZ_IMG));
-% YOZ_IMG = uint8(255 * mat2gray(YOZ_IMG));
+XOZ_IMG = 255 * mat2gray(XOZ_IMG);
+YOZ_IMG = 255 * mat2gray(YOZ_IMG);
 
 XOZ_BIN_IMG = XOZ_IMG;
 XOZ_BIN_IMG(XOZ_IMG > 0) = 1;
 
 YOZ_BIN_IMG = YOZ_IMG;
 YOZ_BIN_IMG(YOZ_IMG > 0) = 1;
-
-%% gaussian filter performed on XOZ_IMG and YOZ_IMG
-gauss_filter = fspecial('gaussian', [3 3], 0.8);
-XOZ_IMG = imfilter(XOZ_IMG, gauss_filter, 'conv', 'replicate');
-YOZ_IMG = imfilter(YOZ_IMG, gauss_filter, 'conv', 'replicate');
-% 
-%% normalize again
-XOZ_IMG = uint8(255 * mat2gray(XOZ_IMG));
-YOZ_IMG = uint8(255 * mat2gray(YOZ_IMG));
-
-%% eliminate regions
-XOZ_IMG = XOZ_IMG(1:z_len/2, :);
-YOZ_IMG = YOZ_IMG(:, z_len/2:z_len);
 
 end
 
