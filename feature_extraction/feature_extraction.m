@@ -26,6 +26,8 @@ vector_6 = HOG(YOZ_MHI);
 
 features = [vector_1' vector_2' vector_3' ...
             vector_4' vector_5' vector_6'];
+
+% features = [vector_1' vector_5' vector_6'];        
         
 end
 

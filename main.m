@@ -23,18 +23,19 @@ action_subsets = {'AS1\\', 'AS2\\', 'AS3\\'};
 % training_data_dir = [data_path test_subsets{1} 'training\\' action_subsets{1}];
 % test_data_dir = [data_path test_subsets{1} 'test\\' action_subsets{1}];
 
-performed_dataset_path = [data_path test_subsets{1}, action_subsets{3}];
+performed_dataset_path = [data_path test_subsets{1}, action_subsets{1}];
 training_data_dir = [performed_dataset_path, 'training\\'];
 test_data_dir = [performed_dataset_path, 'test\\'];
 
 %% Load training data
+feature_dimensions = 81 * 6;
 d = dir(training_data_dir);
 isfile = [d(:).isdir] ~= 1;
 files = {d(isfile).name}';
 
 TR_Gestures = struct;
 train_label = zeros(length(files), 1);
-train_data = zeros(length(files), 486);
+train_data = zeros(length(files), feature_dimensions);
 
 %% Feature extraction for training dataset
 fprintf('Loading training data:\n');
@@ -83,7 +84,7 @@ files = {d(isfile).name}';
 TE_Gestures = struct;
 
 test_label = zeros(length(files), 1);
-test_data = zeros(length(files), 486);
+test_data = zeros(length(files), feature_dimensions);
 
 %% Feature extraction for test dataset
 fprintf('Loading test data:\n');
